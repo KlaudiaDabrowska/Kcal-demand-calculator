@@ -1,25 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
-
-const Wrapper = styled.div`
-  margin-top: 50px;
-  display: ${({ isVisible }) => (isVisible ? 'block' : 'none')};
-  text-align: center;
-  font-weight: bold;
-`;
-
-const Result = styled.p`
-  text-align: center;
-`;
+import { Wrapper, Result, Image } from './ResultArea.styles';
 
 const ResultArea = ({ appropriateText = '', result, isVisible }) => {
   return (
     <Wrapper isVisible={isVisible}>
-      <Result>
+      <Result result={result}>
         {appropriateText}
         {result}
       </Result>
+      <Image />
     </Wrapper>
   );
 };

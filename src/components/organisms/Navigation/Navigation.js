@@ -5,14 +5,14 @@ const Navigation = () => {
   return (
     <Wrapper>
       <Logo>
-        <h1>Check out your BMI, CPM, PPM</h1>
+        <h1>Check out your: Body Mass Index, Total metabolic rate, PPM</h1>
       </Logo>
       <NavBar>
         <StyledLink exact to="/">
-          BMI
+          Body Mass Index
         </StyledLink>
-        <StyledLink to="/">CPM</StyledLink>
-        <StyledLink to="/">PPM</StyledLink>
+        <StyledLink to="/total-metabolic-rate">Total metabolic rate</StyledLink>
+        {/* <StyledLink to="">PPM</StyledLink> */}
       </NavBar>
     </Wrapper>
   );

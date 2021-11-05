@@ -34,7 +34,7 @@ export const NavBar = styled.nav`
 
 const activeClassName = 'active-link';
 export const StyledLink = styled(NavLink).attrs({ activeClassName })`
-  width: 100px;
+  width: 150px;
   font-weight: bold;
   text-decoration: none;
   color: ${({ theme }) => theme.colors.black};
@@ -58,11 +58,11 @@ export const StyledLink = styled(NavLink).attrs({ activeClassName })`
     transition: opacity 0.4s ease-in-out;
     content: '';
     position: absolute;
-    width: 70px;
+    width: 150px;
     height: 3px;
     transform: translateY(-50%);
     top: 120%;
-    right: 14px;
+    right: -1px;
     background-color: ${({ theme }) => theme.colors.darkFirst};
   }
 `;

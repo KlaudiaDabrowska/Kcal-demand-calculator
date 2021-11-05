@@ -6,6 +6,7 @@ import { theme } from 'assets/styles/theme';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Bmi from './Bmi';
 import { Wrapper } from './Root.styles';
+import TotalMetabolicRate from './Cpm';
 
 const Root = () => {
   return (
@@ -14,7 +15,14 @@ const Root = () => {
         <GlobalStyle />
         <MainTemplate>
           <Wrapper>
-            <Bmi />
+            <Switch>
+              <Route path="/total-metabolic-rate">
+                <TotalMetabolicRate />
+              </Route>
+              <Route path="/">
+                <Bmi />
+              </Route>
+            </Switch>
           </Wrapper>
         </MainTemplate>
       </ThemeProvider>

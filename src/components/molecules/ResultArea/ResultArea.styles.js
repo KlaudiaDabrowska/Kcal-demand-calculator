@@ -21,9 +21,9 @@ export const Result = styled.p`
 `;
 
 export const Image = styled.div`
-  width: 500px;
-  height: 50px;
+  width: ${({ width }) => `${width}px`};
+  height: ${({ height }) => `${height}px`};
   margin: 0 auto;
-  background-image: url(${image});
+  background-image: ${({ src }) => `url(${src})`};
   background-repeat: no-repeat;
 `;

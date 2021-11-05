@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Wrapper, Result, Image } from './ResultArea.styles';
+import bmiImage from '../../../assets/images/bmi.jpg';
 
-const ResultArea = ({ appropriateText = '', result, isVisible }) => {
+const ResultArea = ({ appropriateText = '', result, isVisible, isAge }) => {
   return (
     <Wrapper isVisible={isVisible}>
       <Result result={result}>
         {appropriateText}
         {result}
       </Result>
-      <Image />
+      {!isAge && <Image src={bmiImage} width={500} height={50} />}
     </Wrapper>
   );
 };

@@ -11,7 +11,7 @@ const Navigation = () => {
         <StyledLink exact to="/">
           Body Mass Index
         </StyledLink>
-        <StyledLink to="/total-metabolic-rate">Total metabolic rate</StyledLink>
+        <StyledLink to="/basal-metabolic-rate">Basal metabolic rate</StyledLink>
         {/* <StyledLink to="">PPM</StyledLink> */}
       </NavBar>
     </Wrapper>

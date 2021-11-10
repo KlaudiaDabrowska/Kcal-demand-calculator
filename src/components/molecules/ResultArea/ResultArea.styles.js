@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import image from '../../../assets/images/bmi.jpg';
 
 export const Wrapper = styled.div`
   margin-top: 50px;
@@ -11,12 +10,12 @@ export const Wrapper = styled.div`
 export const Result = styled.p`
   text-align: center;
   color: ${({ result, theme }) => {
-    if (result > 35) return theme.colors.extremelyObese;
+    if (150 > result > 35) return theme.colors.extremelyObese;
     if (34.9 > result && result > 30) return theme.colors.obese;
     if (29.9 > result && result > 25) return theme.colors.overweight;
     if (24.9 > result && result > 18.5) return theme.colors.normal;
     if (result < 18.5) return theme.colors.underweight;
-    return theme.colors.grey;
+    return theme.colors.darkSecond;
   }};
 `;
 

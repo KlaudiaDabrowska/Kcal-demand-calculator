@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import { Wrapper, Result, Image } from './ResultArea.styles';
 import bmiImage from '../../../assets/images/bmi.jpg';
 
-const ResultArea = ({ appropriateText = '', result, isVisible, isAge }) => {
+const ResultArea = ({ appropriateText = '', result, isVisible, isImage }) => {
   return (
     <Wrapper isVisible={isVisible}>
       <Result result={result}>
         {appropriateText}
         {result}
       </Result>
-      {!isAge && <Image src={bmiImage} width={500} height={50} />}
+      {isImage && <Image src={bmiImage} width={500} height={50} />}
     </Wrapper>
   );
 };

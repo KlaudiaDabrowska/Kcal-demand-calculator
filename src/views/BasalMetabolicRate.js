@@ -44,7 +44,7 @@ const BasalMetabolicRate = () => {
       <FormField label="Height (cm)" id="height" name="height" value={formValues.height} onChange={inputChange}></FormField>
       <FormField label="Weight (kg)" id="weight" name="weight" value={formValues.weight} onChange={inputChange}></FormField>
       <Button type="submit">Calculate</Button>
-      <ResultArea appropriateText={'Your basal metabolic rate is :  '} result={innerText} isVisible={visible} isAge={true}></ResultArea>
+      <ResultArea appropriateText={'Your basal metabolic rate is :  '} result={innerText} isVisible={visible} isImage={false}></ResultArea>
     </ViewWrapper>
   );
 };

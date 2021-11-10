@@ -44,7 +44,7 @@ export const Bmi = () => {
       <FormField label="Height (m)" id="height" name="height" value={formValues.height} onChange={inputChange}></FormField>
       <FormField label="Weight (kg)" id="weight" name="weight" value={formValues.weight} onChange={inputChange}></FormField>
       <Button type="submit">Calculate</Button>
-      <ResultArea appropriateText={'Your BMI: '} result={innerText} isVisible={visible} isAge={false}></ResultArea>
+      <ResultArea appropriateText={'Your BMI: '} result={innerText} isVisible={visible} isImage={true}></ResultArea>
     </ViewWrapper>
   );
 };

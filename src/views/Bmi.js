@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
 import { ViewWrapper } from 'components/molecules/ViewWrapper/ViewWrapper';
 import { Title } from 'components/atoms/Title/Title';
 import { Subtitle } from 'components/atoms/Subtitle/Subtitle';
@@ -11,16 +11,24 @@ const initialFormState = {
   weight: '',
 };
 
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'INPUT CHANGE':
+      return { ...state, [action.field]: action.value };
+    case 'CLEAR VALUES':
+      return initialFormState;
+    default:
+      return state;
+  }
+};
+
 export const Bmi = () => {
-  const [formValues, setFormValues] = useState(initialFormState);
+  const [formValues, dispatch] = useReducer(reducer, initialFormState);
   const [innerText, setInnerText] = useState('');
   const [visible, setVisible] = useState(false);
 
   const inputChange = (e) => {
-    setFormValues({
-      ...formValues,
-      [e.target.name]: e.target.value,
-    });
+    dispatch({ type: 'INPUT CHANGE', field: e.target.name, value: e.target.value });
   };
 
   const calculateBmi = () => {
@@ -30,7 +38,7 @@ export const Bmi = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     calculateBmi();
-    setFormValues(initialFormState);
+    dispatch({ type: 'CLEAR VALUES' });
     setVisible(true);
   };
 

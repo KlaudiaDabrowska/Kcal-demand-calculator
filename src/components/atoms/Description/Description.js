@@ -6,7 +6,6 @@ export const Description = styled.h2`
   padding: 0 20px;
   color: ${({ theme }) => theme.colors.black};
   font-size: 22px;
-  /* opacity: 0.54; */
   font-weight: 600;
   text-align: center;
 `;

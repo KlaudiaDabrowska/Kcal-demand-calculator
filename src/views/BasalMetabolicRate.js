@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
 import { Subtitle } from 'components/atoms/Subtitle/Subtitle';
 import { Title } from 'components/atoms/Title/Title';
 import { ViewWrapper } from 'components/molecules/ViewWrapper/ViewWrapper';
@@ -12,16 +12,24 @@ const initialFormState = {
   age: '',
 };
 
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'INPUT CHANGE':
+      return { ...state, [action.field]: action.value };
+    case 'CLEAR VALUES':
+      return initialFormState;
+    default:
+      return state;
+  }
+};
+
 const BasalMetabolicRate = () => {
-  const [formValues, setFormValues] = useState(initialFormState);
+  const [formValues, dispatch] = useReducer(reducer, initialFormState);
   const [innerText, setInnerText] = useState('');
   const [visible, setVisible] = useState(false);
 
   const inputChange = (e) => {
-    setFormValues({
-      ...formValues,
-      [e.target.name]: e.target.value,
-    });
+    dispatch({ type: 'INPUT CHANGE', field: e.target.name, value: e.target.value });
   };
 
   const calculate = () => {
@@ -31,7 +39,7 @@ const BasalMetabolicRate = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     calculate();
-    setFormValues(initialFormState);
+    dispatch({ type: 'CLEAR VALUES' });
     setVisible(true);
   };
   return (

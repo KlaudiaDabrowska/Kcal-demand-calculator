@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
 import { Subtitle } from 'components/atoms/Subtitle/Subtitle';
 import { Title } from 'components/atoms/Title/Title';
 import { ViewWrapper } from 'components/molecules/ViewWrapper/ViewWrapper';
@@ -8,17 +8,25 @@ import ResultArea from 'components/molecules/ResultArea/ResultArea';
 import FormRadio from 'components/molecules/FormRadio/FormRadio';
 import { Description } from 'components/atoms/Description/Description';
 
-const BasalMetabolicRate = () => {
-  const [formValues, setFormValues] = useState({ bmr: '' });
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'INPUT CHANGE':
+      return { ...state, [action.field]: action.value };
+    case 'CLEAR VALUES':
+      return { bmr: '' };
+    default:
+      return state;
+  }
+};
+
+const TotalMetabolicRate = () => {
+  const [formValues, dispatch] = useReducer(reducer, { bmr: '' });
   const [innerText, setInnerText] = useState('');
   const [visible, setVisible] = useState(false);
   const [radioValue, setRadioValue] = useState('');
 
   const inputChange = (e) => {
-    setFormValues({
-      ...formValues,
-      [e.target.id]: e.target.value,
-    });
+    dispatch({ type: 'INPUT CHANGE', field: e.target.name, value: e.target.value });
   };
 
   const radioChange = (e) => {
@@ -32,7 +40,7 @@ const BasalMetabolicRate = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     calculate();
-    setFormValues({ bmr: '' });
+    dispatch({ type: 'CLEAR VALUES' });
     setVisible(true);
     setRadioValue('');
   };
@@ -89,4 +97,4 @@ const BasalMetabolicRate = () => {
   );
 };
 
-export default BasalMetabolicRate;
+export default TotalMetabolicRate;
